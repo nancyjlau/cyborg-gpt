@@ -1,5 +1,8 @@
 testing gpt / other llms on the cyborg environment
 
+- results will probably be much better with rl agent guiding llm instead of only llm planning
+- maybe try fine tuning on task specific stuff (on oss models for now, costly for openai models)
+
 ## gpt-4-turbo-2024-04-09
 
 $6.65 - observation 1 - 100 steps with only sleep action for blue agent cost
