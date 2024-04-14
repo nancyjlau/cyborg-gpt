@@ -7,6 +7,7 @@ from CybORG.Simulator.Actions import Sleep, Remove, Restore, Analyse, DeployDeco
 from CybORG.Simulator.Actions.ConcreteActions.ControlTraffic import AllowTrafficZone, BlockTrafficZone
 import openai
 
+openai.api_key = "OPENAI_API_KEY" 
 steps = 100
 sg = EnterpriseScenarioGenerator(blue_agent_class=SleepAgent,
                                  green_agent_class=EnterpriseGreenAgent,
@@ -46,7 +47,13 @@ def extract_observation_details(observation):
 
 def llm_agent(observation, valid_actions):
     if "action" in observation and observation["action"] == "Sleep":
-        return "Monitor"
+        # Check for new processes or connections
+        suspicious_processes, suspicious_connections = extract_suspicious_processes_connections(observation)
+        if suspicious_processes or suspicious_connections:
+            # If new processes or connections are detected, choose the "Analyse" action
+            return "Analyse"
+        else:
+            return "Monitor"
 
     suspicious_files, suspicious_processes, suspicious_connections, suspicious_sessions = extract_observation_details(observation)
 
@@ -58,15 +65,6 @@ def llm_agent(observation, valid_actions):
     Suspicious Sessions: {suspicious_sessions}
 
     Valid Actions: {', '.join(valid_actions)}
-
-    Describe any potential threats and suggest an appropriate action from the list of valid actions:
-    - Analyse: Perform detailed analysis of current network activity.
-    - Remove: Remove or isolate identified threats.
-    - Restore: Recover from any changes made by threats.
-    - Monitor: Continue observing the network for changes.
-    - DeployDecoy: Set up a decoy to trap intruders.
-    - BlockTrafficZone: Block network traffic in specific areas.
-    - AllowTrafficZone: Allow network traffic in restricted areas.
 
     Examples of malicious activity:
     - Files with unknown extensions or random names in temporary directories (e.g., "/tmp/cmd.sh", "/tmp/escalate.sh").
@@ -81,7 +79,17 @@ def llm_agent(observation, valid_actions):
     - Discovery of a new service running on port 25 (SMTP) could be a decoy service.
     - The "PrivilegeEscalate" action indicates an attempt to gain higher privileges.
 
-    Based on the provided observation details, what potential threats do you identify, and which action should be taken next?
+
+    Guidelines for choosing an action:
+    - If new processes or connections are detected on a host, perform an "Analyse" action on that host to gather more information.
+    - If the analysis reveals the presence of malware or unauthorized access, use the "Remove" action to isolate the threat.
+    - If critical files or configurations have been modified, use the "Restore" action to recover the system to a known good state.
+    - If there are no immediate threats, continue monitoring the network using the "Monitor" action.
+    - If you suspect an active intrusion attempt, consider using the "DeployDecoy" action to deceive the attacker.
+    - If a specific subnet or host appears compromised, use the "BlockTrafficZone" action to contain the threat.
+    - If a blocked zone is confirmed to be safe, use the "AllowTrafficZone" action to restore normal traffic flow.
+
+    Based on the provided observation details and the guidelines above, which action should be taken next?
     Please respond with one of the valid actions listed above.
     """
 
@@ -95,6 +103,20 @@ def llm_agent(observation, valid_actions):
     )
     action_str = response.choices[0].message.content.strip()
     return action_str
+
+def extract_suspicious_processes_connections(observation):
+    suspicious_processes = []
+    suspicious_connections = []
+
+    for host, info in observation.items():
+        if isinstance(info, dict):
+            if "Processes" in info:
+                for process in info["Processes"]:
+                    if "Connections" in process:
+                        suspicious_connections.extend(process["Connections"])
+                        suspicious_processes.append(process)
+
+    return suspicious_processes, suspicious_connections
 
 os.makedirs("observations", exist_ok=True)
 timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
