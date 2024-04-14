@@ -17,7 +17,6 @@ $0.83 - observation 11 - 100 steps
 [observations 2 - $0.94](observations/observations-20240413175508.txt)  
 [observation 5 - $1.87](observations/observations-20240413192821.txt)  
 [observation 7 - $3.76](observations/observations-20240413221357.txt)  
-[observation 10 - $0.31](observations/observations-20240413233916)  
 [observation 11 - $0.83](observations/observations-20240413235343.txt)  
 
 ## claude 3 opus - $5 free credit 
