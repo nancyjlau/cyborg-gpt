@@ -18,24 +18,40 @@ cyborg = CybORG(scenario_generator=sg, seed=1234)
 
 def llm_agent(observation, action_history, valid_actions):
     action_history_str = "\n".join([f"Step {i+1}: {action}" for i, action in enumerate(action_history)])
+    
+    suspicious_files = observation.get("Files", [])
+    suspicious_processes = observation.get("Processes", [])
+    suspicious_connections = [p.get("Connections", []) for p in suspicious_processes]
+    suspicious_sessions = observation.get("Sessions", [])
+    
     prompt = f"""
-    Observation: {observation}
+    Observation:
+    Suspicious Files: {suspicious_files}
+    Suspicious Processes: {suspicious_processes}
+    Suspicious Connections: {suspicious_connections}
+    Suspicious Sessions: {suspicious_sessions}
 
     Action History:
     {action_history_str}
 
     Valid Actions: {', '.join(valid_actions)}
 
-    Analyze the observation for signs of suspicious activity such as unknown files, processes, network connections, or shells.
-    If suspicious activity is detected, consider using Analyse, Remove, or Restore actions depending on the severity.
-    If critical hosts are at risk, consider deploying decoys using DeployDecoy.
-    If a subnet or zone appears compromised, consider using BlockTrafficZone to isolate it, but be cautious of disrupting legitimate traffic.
-    Keep track of the action history and try different approaches if the situation doesn't improve.
+    Examples of malicious activity:
+    - Files with unknown extensions or random names in temporary directories (e.g., "/tmp/cmd.sh", "/tmp/escalate.sh").
+    - Processes running from temporary directories or unusual locations.
+    - Connections to unknown or blacklisted IP addresses.
+    - Sessions with privileged access (e.g., "root" sessions).
+    - Unexpected changes to system files or configurations.
 
-    Based on the analysis, what action should the agent take next?
+    Specific examples:
+    - Presence of "cmd.sh" in "/tmp/" indicates a potential user-level shell.
+    - Presence of both "cmd.sh" and "escalate.sh" in "/tmp/" suggests a root-level shell.
+    - Discovery of a new service running on port 25 (SMTP) could be a decoy service.
+    - The "PrivilegeEscalate" action indicates an attempt to gain higher privileges.
+
+    Based on the observation and examples, what action should the agent take next? Please respond with one of the valid actions: {', '.join(valid_actions)}
     """
     
-    # Call the GPT-3.5-turbo API to get the action
     response = openai.ChatCompletion.create(
         model="gpt-4-turbo-2024-04-09",
         messages=[
@@ -57,10 +73,8 @@ action_history = []
 
 os.makedirs("observations", exist_ok=True)
 
-# Get the current timestamp
 timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
 
-# Open the file to store observations
 with open(f"observations/observations-{timestamp}.txt", "w") as file:
     for i in range(steps):
         observation = initial_obs if i == 0 else obs
@@ -71,7 +85,7 @@ with open(f"observations/observations-{timestamp}.txt", "w") as file:
             "Analyse": Analyse,
             "Remove": Remove,
             "Restore": Restore,
-            "Monitor": Sleep,
+            "Monitor": Sleep,  # Sleep is used for monitoring
             "DeployDecoy": DeployDecoy,
             "BlockTrafficZone": BlockTrafficZone,
             "AllowTrafficZone": AllowTrafficZone

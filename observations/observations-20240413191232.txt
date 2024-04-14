@@ -1,0 +1,150 @@
+Step 1:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 2:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 3:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 4:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 5:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 6:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 7:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 8:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 9:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 10:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 11:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep, 'restricted_zone_a_subnet_user_host_0': {'Processes': [{'Connections': [{'local_port': 51425, 'local_address': IPv4Address('10.0.26.88')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.26.88')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_user_host_0', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Sleep
+
+Step 12:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 13:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 14:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 15:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep, 'restricted_zone_a_subnet_user_host_3': {'Processes': [{'Connections': [{'local_port': 51784, 'local_address': IPv4Address('10.0.26.167')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.26.167')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_user_host_3', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Sleep
+
+Step 16:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 17:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 18:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 19:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 20:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 21:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 22:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 23:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 24:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep, 'restricted_zone_a_subnet_server_host_2': {'Processes': [{'Connections': [{'remote_port': 54723, 'local_address': IPv4Address('10.0.90.196'), 'remote_address': IPv4Address('10.0.26.252')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.90.196')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_2', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Sleep
+
+Step 25:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 26:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 27:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 28:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 29:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 30:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
