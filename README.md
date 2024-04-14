@@ -2,6 +2,8 @@ testing gpt / other llms on the cyborg environment
 
 - results will probably be much better with rl agent guiding llm instead of only llm planning
 - maybe try fine tuning on task specific stuff (on oss models for now, costly for openai models)
+- file used was [gpt4.py](gpt4.py)
+- ignore [securitybot.py](testing/securitybot.py), it was unfinished attempt at reimplementing the [depending on yourself when you should](https://arxiv.org/pdf/2403.17674.pdf) paper
 
 ## gpt-4-turbo-2024-04-09
 
