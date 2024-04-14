@@ -47,10 +47,9 @@ def extract_observation_details(observation):
 
 def llm_agent(observation, valid_actions):
     if "action" in observation and observation["action"] == "Sleep":
-        # Check for new processes or connections
         suspicious_processes, suspicious_connections = extract_suspicious_processes_connections(observation)
         if suspicious_processes or suspicious_connections:
-            # If new processes or connections are detected, choose the "Analyse" action
+            # if new processes or connections are detected choose Analyse action
             return "Analyse"
         else:
             return "Monitor"
@@ -93,7 +92,6 @@ def llm_agent(observation, valid_actions):
     Please respond with one of the valid actions listed above.
     """
 
-    # Use OpenAI API to determine the next action
     response = openai.ChatCompletion.create(
         model="gpt-4-turbo-2024-04-09",
         messages=[
@@ -128,7 +126,6 @@ with open(f"observations/observations-{timestamp}.txt", "w") as file:
         action = action_map.get(action_str, Sleep)()
         cyborg.step(agent='blue_agent_0', action=action)
 
-        # Write to file and print to console
         file.write(f"Step {i+1}:\n")
         file.write("Observation:\n")
         file.write(str(observation) + "\n")
