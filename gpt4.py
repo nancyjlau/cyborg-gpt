@@ -7,22 +7,41 @@ from CybORG.Simulator.Actions import Sleep, Remove, Restore, Analyse, DeployDeco
 from CybORG.Simulator.Actions.ConcreteActions.ControlTraffic import AllowTrafficZone, BlockTrafficZone
 import openai
 
-openai.api_key = "OPENAI_API_KEY" 
-steps = 100
+openai.api_key = "OPENAI_API_KEY"
+steps = 30
 sg = EnterpriseScenarioGenerator(blue_agent_class=SleepAgent,
-                                 green_agent_class=EnterpriseGreenAgent,
-                                 red_agent_class=FiniteStateRedAgent,
-                                 steps=steps)
+                    green_agent_class=EnterpriseGreenAgent,
+                    red_agent_class=FiniteStateRedAgent,
+                    steps=steps)
 cyborg = CybORG(scenario_generator=sg, seed=1234)
 valid_actions = ["Analyse", "Remove", "Restore", "Monitor", "DeployDecoy", "BlockTrafficZone", "AllowTrafficZone"]
+
+def get_action_params(observation, hostname):
+    session = None
+    agent = 'blue_agent_0'
+
+    for host, info in observation.items():
+        if host == hostname:
+            if "Sessions" in info:
+                for session_info in info["Sessions"]:
+                    if session_info["agent"] == agent:
+                        session = session_info["session_id"]
+                        break
+            break
+
+    if session is None:
+        session = 0
+
+    return session, agent, hostname
+
 action_map = {
-    "Analyse": Analyse,
-    "Remove": Remove,
-    "Restore": Restore,
-    "Monitor": Sleep, 
-    "DeployDecoy": DeployDecoy,
-    "BlockTrafficZone": BlockTrafficZone,
-    "AllowTrafficZone": AllowTrafficZone
+    "Analyse": lambda obs, hostname: Analyse(session=get_action_params(obs, hostname)[0], agent=get_action_params(obs, hostname)[1], hostname=hostname),
+    "Remove": lambda obs, hostname: Remove(session=get_action_params(obs, hostname)[0], agent=get_action_params(obs, hostname)[1], hostname=hostname),
+    "Restore": lambda obs, hostname: Restore(session=get_action_params(obs, hostname)[0], agent=get_action_params(obs, hostname)[1], hostname=hostname),
+    "Monitor": lambda: Sleep(),
+    "DeployDecoy": lambda obs, hostname: DeployDecoy(session=get_action_params(obs, hostname)[0], agent=get_action_params(obs, hostname)[1], hostname=hostname),
+    "BlockTrafficZone": lambda obs, hostname: BlockTrafficZone(session=get_action_params(obs, hostname)[0], agent=get_action_params(obs, hostname)[1], hostname=hostname),
+    "AllowTrafficZone": lambda obs, hostname: AllowTrafficZone(session=get_action_params(obs, hostname)[0], agent=get_action_params(obs, hostname)[1], hostname=hostname)
 }
 
 def extract_observation_details(observation):
@@ -47,6 +66,11 @@ def extract_observation_details(observation):
 
 def llm_agent(observation, valid_actions, previous_actions):
     suspicious_files, suspicious_processes, suspicious_connections, suspicious_sessions = extract_observation_details(observation)
+
+    print("Suspicious Files:", suspicious_files)
+    print("Suspicious Processes:", suspicious_processes)
+    print("Suspicious Connections:", suspicious_connections)
+    print("Suspicious Sessions:", suspicious_sessions)
 
     prompt = f"""
     Initial instructions and rules:
@@ -110,39 +134,43 @@ def llm_agent(observation, valid_actions, previous_actions):
         )
         action_str = response.choices[0].message.content.strip()
 
-        if action_str in valid_actions:
-            return action_str
+        print("LLM Response:", action_str)
+
+        if action_str == "Monitor":
+            print("Selected Action: Monitor")
+            return action_str, None
         else:
-            prompt += f"\nInvalid action: {action_str}. Please select a valid action from the following list: {', '.join(valid_actions)}.\n\nAction:"
+            try:
+                action_str, hostname = action_str.split(',')
+                action_str = action_str.strip()
+                hostname = hostname.strip()
 
+                print("Parsed Action:", action_str)
+                print("Parsed Hostname:", hostname)
 
+                if action_str in valid_actions and hostname in observation:
+                    print("Selected Action:", action_str)
+                    print("Selected Hostname:", hostname)
+                    return action_str, hostname
+                else:
+                    raise ValueError
+            except ValueError:
+                print("Invalid Action or Hostname")
+                prompt += f"\nInvalid action or hostname. Please provide a valid action and hostname separated by a comma, or respond with 'Monitor' if there are no immediate threats.\n\nAction:"
 
-def extract_suspicious_processes_connections(observation):
-    suspicious_processes = []
-    suspicious_connections = []
-
-    for host, info in observation.items():
-        if isinstance(info, dict):
-            if "Processes" in info:
-                for process in info["Processes"]:
-                    if "Connections" in process:
-                        suspicious_connections.extend(process["Connections"])
-                        suspicious_processes.append(process)
-
-    return suspicious_processes, suspicious_connections
-
+    
 os.makedirs("observations", exist_ok=True)
 timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
 with open(f"observations/observations-{timestamp}.txt", "w") as file:
-    previous_actions = []  
+    previous_actions = []
     for i in range(steps):
         observation = cyborg.get_observation(agent='blue_agent_0')
-        action_str = llm_agent(observation, valid_actions, previous_actions)
-        
-        action = action_map.get(action_str, Sleep)()
+        action_str, hostname = llm_agent(observation, valid_actions, previous_actions)
+
+        action = action_map.get(action_str)(observation, hostname) if hostname else action_map.get(action_str)()
         cyborg.step(agent='blue_agent_0', action=action)
 
-        previous_actions.append(action_str)
+        previous_actions.append(f"{action_str}, {hostname}")
         previous_actions = previous_actions[-5:]
 
         file.write(f"Step {i+1}:\n")
@@ -150,7 +178,7 @@ with open(f"observations/observations-{timestamp}.txt", "w") as file:
         file.write(str(observation) + "\n")
         file.write("Action: " + str(action) + "\n")
         file.write("\n")
-        
+
         print(f"Step {i+1}:")
         print("Observation:")
         print(observation)
