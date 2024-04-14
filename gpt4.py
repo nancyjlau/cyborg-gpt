@@ -45,62 +45,77 @@ def extract_observation_details(observation):
 
     return suspicious_files, suspicious_processes, suspicious_connections, suspicious_sessions
 
-def llm_agent(observation, valid_actions):
-    if "action" in observation and observation["action"] == "Sleep":
-        suspicious_processes, suspicious_connections = extract_suspicious_processes_connections(observation)
-        if suspicious_processes or suspicious_connections:
-            # if new processes or connections are detected choose Analyse action
-            return "Analyse"
-        else:
-            return "Monitor"
-
+def llm_agent(observation, valid_actions, previous_actions):
     suspicious_files, suspicious_processes, suspicious_connections, suspicious_sessions = extract_observation_details(observation)
 
     prompt = f"""
-    Observation Details:
+    Initial instructions and rules:
+    You are a cybersecurity agent managing a complex network. Your goal is to detect and respond to potential security threats.
+    
+    The rules are:
+
+    Analyze suspicious activities to gather more information.
+    Remove any identified malware or unauthorized access.
+    Restore critical files or configurations to a known good state.
+    Monitor the network when there are no immediate threats.
+    Use deception techniques if you suspect an active intrusion attempt.
+    Contain compromised subnets or hosts to limit the scope of the attack.
+    Restore normal traffic flow to a blocked zone when it is confirmed to be safe.
+    
+    Memory:
+    Previous actions taken:
+    {previous_actions}
+
+    Current state:
     Suspicious Files: {suspicious_files}
     Suspicious Processes: {suspicious_processes}
     Suspicious Connections: {suspicious_connections}
     Suspicious Sessions: {suspicious_sessions}
 
-    Valid Actions: {', '.join(valid_actions)}
+    One-shot examples of valid actions:
+    Action: Analyse
+    Description: Gather more information about a host with new processes or connections.
 
-    Examples of malicious activity:
-    - Files with unknown extensions or random names in temporary directories (e.g., "/tmp/cmd.sh", "/tmp/escalate.sh").
-    - Processes running from temporary directories or unusual locations.
-    - Connections to unknown or blacklisted IP addresses.
-    - Sessions with privileged access (e.g., "root" sessions).
-    - Unexpected changes to system files or configurations.
+    Action: Remove
+    Description: Isolate and remove identified malware or unauthorized access.
 
-    Specific examples:
-    - Presence of "cmd.sh" in "/tmp/" indicates a potential user-level shell.
-    - Presence of both "cmd.sh" and "escalate.sh" in "/tmp/" suggests a root-level shell.
-    - Discovery of a new service running on port 25 (SMTP) could be a decoy service.
-    - The "PrivilegeEscalate" action indicates an attempt to gain higher privileges.
+    Action: Restore
+    Description: Recover critical files or configurations to a known good state.
 
+    Action: Monitor
+    Description: Continue monitoring the network when there are no immediate threats.
 
-    Guidelines for choosing an action:
-    - If new processes or connections are detected on a host, perform an "Analyse" action on that host to gather more information.
-    - If the analysis reveals the presence of malware or unauthorized access, use the "Remove" action to isolate the threat.
-    - If critical files or configurations have been modified, use the "Restore" action to recover the system to a known good state.
-    - If there are no immediate threats, continue monitoring the network using the "Monitor" action.
-    - If you suspect an active intrusion attempt, consider using the "DeployDecoy" action to deceive the attacker.
-    - If a specific subnet or host appears compromised, use the "BlockTrafficZone" action to contain the threat.
-    - If a blocked zone is confirmed to be safe, use the "AllowTrafficZone" action to restore normal traffic flow.
+    Action: DeployDecoy
+    Description: Use deception techniques if an active intrusion attempt is suspected.
 
-    Based on the provided observation details and the guidelines above, which action should be taken next?
-    Please respond with one of the valid actions listed above.
+    Action: BlockTrafficZone
+    Description: Contain a compromised subnet or host to limit the attack scope.
+
+    Action: AllowTrafficZone
+    Description: Restore normal traffic flow to a blocked zone when it is confirmed safe.
+
+    Query:
+    Based on the current state and the provided examples, select the most appropriate action to take next. Respond with only the action name.
+
+    Action:
     """
 
-    response = openai.ChatCompletion.create(
-        model="gpt-4-turbo-2024-04-09",
-        messages=[
-            {"role": "system", "content": "You are a cybersecurity agent managing a complex network."},
-            {"role": "user", "content": prompt}
-        ]
-    )
-    action_str = response.choices[0].message.content.strip()
-    return action_str
+    while True:
+        response = openai.ChatCompletion.create(
+            model="gpt-4-turbo-2024-04-09",
+            messages=[
+                {"role": "system", "content": "You are a cybersecurity agent managing a complex network."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        action_str = response.choices[0].message.content.strip()
+
+        if action_str in valid_actions:
+            return action_str
+        else:
+            prompt += f"\nInvalid action: {action_str}. Please select a valid action from the following list: {', '.join(valid_actions)}.\n\nAction:"
+
+
 
 def extract_suspicious_processes_connections(observation):
     suspicious_processes = []
@@ -119,12 +134,16 @@ def extract_suspicious_processes_connections(observation):
 os.makedirs("observations", exist_ok=True)
 timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
 with open(f"observations/observations-{timestamp}.txt", "w") as file:
+    previous_actions = []  
     for i in range(steps):
         observation = cyborg.get_observation(agent='blue_agent_0')
-        action_str = llm_agent(observation, valid_actions)
+        action_str = llm_agent(observation, valid_actions, previous_actions)
         
         action = action_map.get(action_str, Sleep)()
         cyborg.step(agent='blue_agent_0', action=action)
+
+        previous_actions.append(action_str)
+        previous_actions = previous_actions[-5:]
 
         file.write(f"Step {i+1}:\n")
         file.write("Observation:\n")
