@@ -9,7 +9,6 @@ $6.65 - observation 1 - 100 steps with only sleep action for blue agent cost
 $0.94 - observation 2 - 26 steps
 $1.87 - observation 5 - 48 steps 
 $3.76 - observation 7 - 48 steps
-$0.31 - observation 10 - 60 steps
 $0.83 - observation 11 - 100 steps
 
 [observations 1 - $6.65](observations/observations-1.txt)  
