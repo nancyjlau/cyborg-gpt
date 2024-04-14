@@ -1,0 +1,100 @@
+Step 1:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'restricted_zone_a_subnet_router': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.82'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 1, 'username': 'ubuntu', 'timeout': 0, 'PID': 8, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 8, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_router', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_user_host_0': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.203'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 2, 'username': 'ubuntu', 'timeout': 0, 'PID': 9677, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 9677, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_user_host_0', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>, 'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_user_host_1': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.113'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 3, 'username': 'ubuntu', 'timeout': 0, 'PID': 6943, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 6943, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_user_host_1', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_user_host_2': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.200'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 0, 'username': 'ubuntu', 'timeout': 0, 'PID': 5349, 'Type': <SessionType.VELOCIRAPTOR_SERVER: 8>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 5349, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_user_host_2', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_server_host_0': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.254'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 4, 'username': 'ubuntu', 'timeout': 0, 'PID': 4634, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 4634, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_0', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_server_host_1': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.253'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 5, 'username': 'ubuntu', 'timeout': 0, 'PID': 8731, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 8731, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_1', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_server_host_2': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.252'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 6, 'username': 'ubuntu', 'timeout': 0, 'PID': 9470, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 9470, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_2', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_server_host_3': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.251'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 7, 'username': 'ubuntu', 'timeout': 0, 'PID': 8794, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 8794, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_3', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_server_host_4': {'Interface': [{'interface_name': 'eth0', 'ip_address': IPv4Address('10.0.250.250'), 'Subnet': IPv4Network('10.0.250.0/24')}], 'Sessions': [{'session_id': 8, 'username': 'ubuntu', 'timeout': 0, 'PID': 9864, 'Type': <SessionType.UNKNOWN: 1>, 'agent': 'blue_agent_0'}], 'Processes': [{'PID': 9864, 'username': 'ubuntu'}], 'User Info': [{'username': 'root', 'Groups': [{'GID': 0}]}, {'username': 'user', 'Groups': [{'GID': 1}]}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_4', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>, 'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Sleep
+
+Step 2:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 3:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 4:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 5:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep, 'restricted_zone_a_subnet_user_host_1': {'Processes': [{'Connections': [{'local_port': 57664, 'local_address': IPv4Address('10.0.250.113')}]}, {'Connections': [{'local_port': 57664, 'local_address': IPv4Address('10.0.250.113')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.250.113')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_user_host_1', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Sleep
+
+Step 6:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 7:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 8:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 9:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 10:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 11:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 12:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 13:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 14:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 15:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 16:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 17:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 18:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 19:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 20:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
