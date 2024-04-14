@@ -1,5 +1,7 @@
 testing gpt / other llms on the cyborg environment
 
+![diagram](diagram.png)
+
 - results will probably be much better with rl agent guiding llm instead of only llm planning
 - maybe try fine tuning on task specific stuff (on oss models for now, costly for openai models)
 - file used was [gpt4.py](gpt4.py)
@@ -12,12 +14,18 @@ $0.94 - observation 2 - 26 steps
 $1.87 - observation 5 - 48 steps   
 $3.76 - observation 7 - 48 steps  
 $0.83 - observation 11 - 100 steps  
+$4.58 - 83 steps
 
 [observations 1 - $6.65](observations/observations-1.txt)  
 [observations 2 - $0.94](observations/observations-20240413175508.txt)  
 [observation 5 - $1.87](observations/observations-20240413192821.txt)  
 [observation 7 - $3.76](observations/observations-20240413221357.txt)  
 [observation 11 - $0.83](observations/observations-20240413235343.txt)  
+
+Total Spent:  
+API requests: 1,210  
+Tokens: 2,784,561  
+Credits: $34.08  
 
 ## claude 3 opus - $5 free credit 
 results later
