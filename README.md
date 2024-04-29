@@ -9,6 +9,8 @@ writeup: https://docs.google.com/document/d/1-2tfITqtReGDWNxjrSJ5jQocOZjX0y9aG25
 - file used was [gpt4.py](gpt4.py)
 - ignore [securitybot.py](testing/securitybot.py), it was unfinished attempt at reimplementing the [depending on yourself when you should](https://arxiv.org/pdf/2403.17674.pdf) paper
 
+Probably good to use [DSPy](https://github.com/stanfordnlp/dspy)
+
 ## gpt-4-turbo-2024-04-09
 
 $6.65 - observation 1 - 100 steps with only sleep action for blue agent cost  
