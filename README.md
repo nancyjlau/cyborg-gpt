@@ -6,7 +6,6 @@ writeup: https://docs.google.com/document/d/1-2tfITqtReGDWNxjrSJ5jQocOZjX0y9aG25
 
 - results will probably be much better with rl agent guiding llm instead of only llm planning
 - maybe try fine tuning on task specific stuff (on oss models for now, costly for openai models)
-- file used was [gpt4.py](gpt4.py)
 - ignore [securitybot.py](testing/securitybot.py), it was unfinished attempt at reimplementing the [depending on yourself when you should](https://arxiv.org/pdf/2403.17674.pdf) paper
 
 **Probably good to use [DSPy](https://github.com/stanfordnlp/dspy), will be testing on the [dspy-test](https://github.com/nancyjlau/cyborg-gpt/tree/dspy-test) branch.**
@@ -35,11 +34,13 @@ help i have used around $40 now and i don't think i can have any more money for 
 
 ## llama 3 
 observations with analyse and monitor actions successfully working
-code here: [llama3.py](llama3.py)
+file: [llama3.py](llama3.py)
 
 should probably add actual logging of results from [analyse actions](https://cage-challenge.github.io/cage-challenge-4/pages/tutorials/03_Actions/B_Blue_Actions/2_Analyse/) too so can take further actions from there, and maybe analyzing more than the first detected host?
 
 currently using the groq api for llama3-8b-8192 because it's really fast and free.
+
+You can get an api key here: https://console.groq.com/keys
 
 ## claude 3 opus - $5 free credit 
 results later
