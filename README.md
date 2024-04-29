@@ -27,5 +27,13 @@ API requests: 1,210
 Tokens: 2,784,561  
 Credits: $34.08  
 
+## llama 3 
+observations with analyse and monitor actions successfully working
+code here: [llama3.py](llama3.py)
+
+should probably add actual logging of results from [analyse actions](https://cage-challenge.github.io/cage-challenge-4/pages/tutorials/03_Actions/B_Blue_Actions/2_Analyse/) too so can take further actions from there
+
+currently using the groq api for llama3-8b-8192 because it's really fast and free.
+
 ## claude 3 opus - $5 free credit 
 results later
