@@ -37,7 +37,7 @@ help i have used around $40 now and i don't think i can have any more money for 
 observations with analyse and monitor actions successfully working
 code here: [llama3.py](llama3.py)
 
-should probably add actual logging of results from [analyse actions](https://cage-challenge.github.io/cage-challenge-4/pages/tutorials/03_Actions/B_Blue_Actions/2_Analyse/) too so can take further actions from there
+should probably add actual logging of results from [analyse actions](https://cage-challenge.github.io/cage-challenge-4/pages/tutorials/03_Actions/B_Blue_Actions/2_Analyse/) too so can take further actions from there, and maybe analyzing more than the first detected host?
 
 currently using the groq api for llama3-8b-8192 because it's really fast and free.
 

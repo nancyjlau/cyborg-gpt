@@ -114,7 +114,7 @@ def llm_agent(observation, valid_actions, previous_actions):
             {"role": "system", "content": "You are a cybersecurity agent managing a complex network."},
             {"role": "user", "content": prompt}
         ],
-        model="llama3-8b-8192"  # Replace with the correct Groq model identifier
+        model="llama3-8b-8192"  
     )
     action_str = response.choices[0].message.content.strip()
 
@@ -129,7 +129,7 @@ def llm_agent(observation, valid_actions, previous_actions):
             if action_str.lower() in ["analyse", "analyze"] or ',' not in action_str:
                 suspicious_hosts = [host for host in observation if isinstance(observation[host], dict) and 'Files' in observation[host]]
                 if suspicious_hosts:
-                    hostname = suspicious_hosts[0]  # Choose the first suspicious host
+                    hostname = suspicious_hosts[0] 
                 else:
                     valid_hosts = [host for host in observation if isinstance(observation[host], dict)]
                     hostname = valid_hosts[0] if valid_hosts else None  # Choose the first valid host or None if no valid hosts
