@@ -425,3 +425,76 @@ Action: Sleep
 
 Step 86:
 Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 87:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep}
+Action: Sleep
+
+Step 88:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep, 'restricted_zone_a_subnet_server_host_4': {'Processes': [{'Connections': [{'remote_port': 55554, 'local_address': IPv4Address('10.0.67.200'), 'remote_address': IPv4Address('10.0.250.250')}]}, {'Connections': [{'remote_port': 55554, 'local_address': IPv4Address('10.0.67.200'), 'remote_address': IPv4Address('10.0.250.250')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.67.200')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_4', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>, 'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Analyse restricted_zone_a_subnet_server_host_4
+
+Step 89:
+Observation:
+{'success': <TernaryEnum.IN_PROGRESS: 4>, 'restricted_zone_a_subnet_server_host_3': {'Processes': [{'Connections': [{'local_port': 22, 'remote_port': 58950, 'local_address': IPv4Address('10.0.250.251'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 3390, 'remote_port': 55574, 'local_address': IPv4Address('10.0.250.251'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 58950, 'local_address': IPv4Address('10.0.250.251'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 3390, 'remote_port': 55574, 'local_address': IPv4Address('10.0.250.251'), 'remote_address': IPv4Address('10.0.250.200')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.250.251')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_3', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Analyse restricted_zone_a_subnet_server_host_3
+
+Step 90:
+Observation:
+{'success': <TernaryEnum.TRUE: 1>, 'action': Analyse restricted_zone_a_subnet_server_host_4}
+Action: Sleep
+
+Step 91:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep, 'restricted_zone_a_subnet_server_host_3': {'Processes': [{'Connections': [{'remote_port': 58204, 'local_address': IPv4Address('10.0.26.29'), 'remote_address': IPv4Address('10.0.250.251')}]}, {'Connections': [{'remote_port': 58204, 'local_address': IPv4Address('10.0.26.29'), 'remote_address': IPv4Address('10.0.250.251')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.26.29')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_3', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Analyse restricted_zone_a_subnet_server_host_3
+
+Step 92:
+Observation:
+{'success': <TernaryEnum.IN_PROGRESS: 4>}
+Action: Sleep
+
+Step 93:
+Observation:
+{'success': <TernaryEnum.TRUE: 1>, 'action': Analyse restricted_zone_a_subnet_server_host_3, 'restricted_zone_a_subnet_router': {'Processes': [{'Connections': [{'remote_port': 22, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'remote_port': 22, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.250.250')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_router', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_server_host_4': {'Processes': [{'Connections': [{'remote_port': 50297, 'local_address': IPv4Address('10.0.233.92'), 'remote_address': IPv4Address('10.0.250.250')}]}, {'Connections': [{'remote_port': 22, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'remote_port': 50297, 'local_address': IPv4Address('10.0.233.92'), 'remote_address': IPv4Address('10.0.250.250')}]}, {'Connections': [{'remote_port': 22, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'local_port': 22, 'remote_port': 54275, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'PID': 9873}], 'Interface': [{'ip_address': IPv4Address('10.0.233.92')}, {'ip_address': IPv4Address('10.0.250.250')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_4', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>, 'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}, 'restricted_zone_a_subnet_user_host_2': {'Processes': [{'Connections': [{'remote_port': 22, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}, {'Connections': [{'remote_port': 22, 'local_address': IPv4Address('10.0.250.250'), 'remote_address': IPv4Address('10.0.250.200')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.250.250')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_user_host_2', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Analyse restricted_zone_a_subnet_router
+
+Step 94:
+Observation:
+{'success': <TernaryEnum.IN_PROGRESS: 4>}
+Action: Sleep
+
+Step 95:
+Observation:
+{'success': <TernaryEnum.TRUE: 1>, 'action': Analyse restricted_zone_a_subnet_router}
+Action: Sleep
+
+Step 96:
+Observation:
+{'success': <TernaryEnum.UNKNOWN: 2>, 'action': Sleep, 'restricted_zone_a_subnet_server_host_3': {'Processes': [{'Connections': [{'remote_port': 58461, 'local_address': IPv4Address('10.0.26.224'), 'remote_address': IPv4Address('10.0.250.251')}]}, {'Connections': [{'remote_port': 58461, 'local_address': IPv4Address('10.0.26.224'), 'remote_address': IPv4Address('10.0.250.251')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.26.224')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_3', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Analyse restricted_zone_a_subnet_server_host_3
+
+Step 97:
+Observation:
+{'success': <TernaryEnum.IN_PROGRESS: 4>}
+Action: Sleep
+
+Step 98:
+Observation:
+{'success': <TernaryEnum.TRUE: 1>, 'action': Analyse restricted_zone_a_subnet_server_host_3, 'restricted_zone_a_subnet_server_host_1': {'Processes': [{'Connections': [{'remote_port': 49595, 'local_address': IPv4Address('10.0.67.146'), 'remote_address': IPv4Address('10.0.250.253')}]}, {'Connections': [{'remote_port': 49595, 'local_address': IPv4Address('10.0.67.146'), 'remote_address': IPv4Address('10.0.250.253')}]}], 'Interface': [{'ip_address': IPv4Address('10.0.67.146')}], 'System info': {'Hostname': 'restricted_zone_a_subnet_server_host_1', 'OSType': <OperatingSystemType.LINUX: 3>, 'OSDistribution': <OperatingSystemDistribution.KALI: 9>, 'OSVersion': <OperatingSystemVersion.K2019_4: 11>, 'Architecture': <Architecture.x64: 2>, 'position': array([0., 0.])}}}
+Action: Analyse restricted_zone_a_subnet_server_host_1
+
+Step 99:
+Observation:
+{'success': <TernaryEnum.IN_PROGRESS: 4>}
+Action: Sleep
+
+Step 100:
+Observation:
+{'success': <TernaryEnum.TRUE: 1>, 'action': Analyse restricted_zone_a_subnet_server_host_1}
+Action: Sleep
+

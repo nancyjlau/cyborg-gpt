@@ -1,5 +1,7 @@
 testing gpt / other llms on the cyborg environment
 
+writeup: https://docs.google.com/document/d/1-2tfITqtReGDWNxjrSJ5jQocOZjX0y9aG255o7SKL5U/edit?usp=sharing
+
 ![diagram](diagram.png)
 
 - results will probably be much better with rl agent guiding llm instead of only llm planning
@@ -26,6 +28,8 @@ Total Spent:
 API requests: 1,210  
 Tokens: 2,784,561  
 Credits: $34.08  
+
+help i have used around $40 now and i don't think i can have any more money for adding more gpt 4 credits.....
 
 ## llama 3 
 observations with analyse and monitor actions successfully working
